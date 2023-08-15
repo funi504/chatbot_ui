@@ -110,11 +110,13 @@ h1 {
     padding-bottom: 10px;
     padding-left: 25px;
     border-radius: 0px 30px 30px 30px;
-    width: 70%;
+    max-width: 70%;
+    overflow: auto;
 }
 .botText span {
     
     border-radius: 2px;
+    width: 30%;
 }
 #tidbit {
     position: absolute;

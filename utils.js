@@ -1,9 +1,25 @@
+const boxed = document.getElementById("boxed")
+boxed.innerHTML =
+` <div id=headerContainer></div>
+  <div id='form-container'>
+    <h4 onclick=closeForm() id='close-button'>close</h4>
+    <form id='email-form' >
+      <input type='text' placeholder='Enter your name' id='name-input' name='name'></input>
+      <input type='text' placeholder='Enter your email' id='email-input' name='email'></input>
+      <textarea type='text' placeholder='Enter your message' id='message-input' name="message" rows="8"></textarea>
+      <input type='submit' id='form-submit-button'></input>
+  </form>
+  </div>
+  <div id="chatboxContainer" >
+    <div id= "botTextContainer"></div>
+    <div id= "userInputContainer"></div>
+  </div>`
+
+
 const header = document.getElementById("headerContainer")
 const botText = document.getElementById("botTextContainer")
 const userInput = document.getElementById("userInputContainer")
 
-
-  
   header.innerHTML = 
 
   `<div id="header">
@@ -76,13 +92,13 @@ function closeForm(){
       }), 
       body:JSON.stringify(
         { 'msg': rawText,
-          "projectId": Id
+          "project_Id": Id
           })
 
     }).then((resp) => resp.json())
       .then((data) => {
 
-            console.log(Id)
+            //console.log(Id)
             var botHtml = '<p class="botText"><span>' + data.response + "</span></p>";
           $("#chatbox").append(botHtml);
 
@@ -149,7 +165,8 @@ function closeForm(){
         body:JSON.stringify(
           { 'name': nameValue,
             "email": emailValue,
-            "message":messageValue
+            "message":messageValue,
+            "project_Id": Id
             })
   
       }).then(response => response.json())
