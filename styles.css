@@ -133,11 +133,24 @@ h1 {
     display: flex;
     align-items: center;
 }
-#botName{
+#sendEmail{
     margin-left: 10%;
     font-size: 15px;
     font-weight: bold;
     color: #668fff;
+    cursor: pointer;
+}
+#sendWhatsapp{
+    margin-left: 10%;
+    font-size: 15px;
+    width:30px;
+    height: 30px;
+    font-weight: bold;
+    color: #668fff;
+    cursor: pointer;
+}
+.img{
+    width:30px;
 }
 #boxed {
     
@@ -162,6 +175,85 @@ h1 {
     width: 30px;
     height:30px;
 }
+#form-container{
+    display:none;
+}
+#close-button{
+    background-color:white;
+    margin-left: 85%;
+    cursor: pointer;
+}
+
+#email-form{
+
+    display: flex;
+    flex-direction: column;
+    height:650px;
+    width:100%;
+    align-items: center;
+    margin-top: 10px;
+}
+#name-input{
+
+    width:95%;
+    height:35px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+
+}
+#email-input{
+
+    width:95%;
+    height:35px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+
+}
+#message-input{
+
+    width:90%;
+    margin-bottom: 20px;
+    font-size: 15px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+
+}
+textarea {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+  }
+  
+  textarea {
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+  }
+  #form-submit-button {
+
+    font-size: 500;
+    color:#f0f1f2;
+    width: 100px;
+    height: 30px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(118, 197, 250);
+    }
  
 @media screen and (max-width: 1000px) {
     #boxed {

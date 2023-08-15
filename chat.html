@@ -9,18 +9,35 @@
     </head>
     
     <body>
+      <script> 
+        const Id="project Id"; 
+        const cellphoneNumbers = "27795889465"
+        </script>
       <div id="chatWithUsContainer">
         <div id="chatWithUsButton" onclick= display() >chat with us</div>
       </div>
+
       <div >
-      <div id="boxed">
-        <div id=headerContainer></div>
-        <div id="chatboxContainer" >
-          <div id= "botTextContainer"></div>
-          <div id= "userInputContainer"></div>
+        <div id="boxed">
+          <div id=headerContainer></div>
+          <div id='form-container'>
+            <h4 onclick=closeForm() id='close-button'>close</h4>
+            <form id='email-form' >
+              <input type='text' placeholder='Enter your name' id='name-input' name='name'></input>
+              <input type='text' placeholder='Enter your email' id='email-input' name='email'></input>
+              <textarea type='text' placeholder='Enter your message' id='message-input' name="message" rows="8"></textarea>
+              <input type='submit' id='form-submit-button'></input>
+          </form>
+          </div>
+          <div id="chatboxContainer" >
+            <div id= "botTextContainer"></div>
+            <div id= "userInputContainer"></div>
+          </div>
+          
         </div>
-      </div>
-        <script src="utils.js"></script>
+
+
+          <script src="utils.js"></script>
       </div>
 
     </body>
