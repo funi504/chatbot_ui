@@ -91,7 +91,7 @@ function closeForm(){
           'Content-Type': 'application/json'
       }), 
       body:JSON.stringify(
-        { 'msg': rawText,
+        { "msg": rawText,
           "project_Id": Id
           })
 
@@ -133,7 +133,7 @@ function closeForm(){
 
 
       // Construct the dynamic action URL
-      var dynamicAction = 'https:/myurl.com/'+ Id;
+      var dynamicAction = "http://127.0.0.1:5000/email";
 
       var nameValue = document.getElementById('name-input').value;
       var emailValue = document.getElementById('email-input').value;
@@ -157,19 +157,20 @@ function closeForm(){
       if( nameValue!=='' && emailValue!=='' && messageValue!==''){
 
       fetch(dynamicAction, { 
+
         method: 'post', 
         headers: new Headers({
             //'Authorization': 'Basic '+btoa('username:password'), 
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
         }), 
-        body:JSON.stringify(
-          { 'name': nameValue,
+        body:JSON.stringify({
+            "name": nameValue,
             "email": emailValue,
             "message":messageValue,
-            "project_Id": Id
+            "project_id": Id
             })
   
-      }).then(response => response.json())
+      })
       .then(data => {
         // Handle the response after posting data
         console.log(data);
