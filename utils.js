@@ -84,7 +84,7 @@ function closeForm(){
       .scrollIntoView({ block: "start", behavior: "smooth" });
 
     //send post request to the backend
-    fetch("http://127.0.0.1:5000/success", { 
+    fetch("http://localhost:8080/success", { 
       method: 'post', 
       headers: new Headers({
           //'Authorization': 'Basic '+btoa('username:password'), 
@@ -133,7 +133,7 @@ function closeForm(){
 
 
       // Construct the dynamic action URL
-      var dynamicAction = "http://127.0.0.1:5000/email";
+      var dynamicAction = "http://localhost:8080/sendemail";
 
       var nameValue = document.getElementById('name-input').value;
       var emailValue = document.getElementById('email-input').value;
@@ -167,7 +167,7 @@ function closeForm(){
             "name": nameValue,
             "email": emailValue,
             "message":messageValue,
-            "project_id": Id
+            "project_Id": Id
             })
   
       })
