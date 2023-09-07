@@ -36,7 +36,13 @@ const userInput = document.getElementById("userInputContainer")
   botText.innerHTML = 
   `<div id="chatbox">
     <p class="botText"><span>Hi! Im Ernest</span></p>
-    <p class="botText"><span>You can ask me Questions</span></p>
+    <p class="botText">
+      <span>I can  help you with the following :</span> <br/><br/>
+      <span>1. technical support</span> <br/><br/>
+      <span>2.FAQs</span> <br/><br/>
+      <span>3.Alliences and paertnerships</span><br/><br/>
+      <span>4.send email or whatsapp by clicking the icons</span>
+    </p>
     <p class="botText"><span>Type "quit" to close</span></p>
   </div>`
 
