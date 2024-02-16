@@ -1,3 +1,10 @@
+const scripts = document.getElementById("scripts")
+scripts.append= ` <script>
+function handleClick(get) {
+    alert('Div clicked!');
+    // Add your custom logic or function calls here
+}
+</script>`
 const boxed = document.getElementById("boxed")
 boxed.innerHTML =
 ` <div id=headerContainer></div>
@@ -37,13 +44,17 @@ const userInput = document.getElementById("userInputContainer")
   `<div id="chatbox">
     <p class="botText"><span>Hi! Im Ernest</span></p>
     <p class="botText">
-      <span>I can  help you with the following :</span> <br/><br/>
-      <span>1. technical support</span> <br/><br/>
-      <span>2.FAQs</span> <br/><br/>
-      <span>3.Alliences and paertnerships</span><br/><br/>
-      <span>4.send email or whatsapp by clicking the icons</span>
+      <span>How I can  help you </span> <br/><br/>
+
     </p>
     <p class="botText"><span>Type "quit" to close</span></p>
+    <div class= "action-list">
+      <div class = "action" onclick="handleClick()"> services </div>
+      <div class = "action"> solutions </div>
+      <div class = "action"> Book a call </div>
+      <div class = "action"> Leave a message </div>
+      
+    </div>
   </div>`
 
   userInput.innerHTML = 
@@ -85,9 +96,8 @@ function closeForm(){
 
     if(rawText !== ""){
     $("#chatbox").append(userHtml);
-    document
-      .getElementById("userInput")
-      .scrollIntoView({ block: "start", behavior: "smooth" });
+    document.getElementById("userInput")
+    document.scrollIntoView({ block: "start", behavior: "smooth" });
 
     //send post request to the backend
     fetch("http://localhost:8080/success", { 
@@ -139,7 +149,7 @@ function closeForm(){
 
 
       // Construct the dynamic action URL
-      var dynamicAction = "http://localhost:8080/sendemail";
+      var dynamicAction = "http://localhost:8080/email";
 
       var nameValue = document.getElementById('name-input').value;
       var emailValue = document.getElementById('email-input').value;
@@ -173,7 +183,7 @@ function closeForm(){
             "name": nameValue,
             "email": emailValue,
             "message":messageValue,
-            "project_Id": Id
+            "project_id": Id
             })
   
       })
