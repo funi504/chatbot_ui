@@ -1,10 +1,4 @@
-const scripts = document.getElementById("scripts")
-scripts.append= ` <script>
-function handleClick(get) {
-    alert('Div clicked!');
-    // Add your custom logic or function calls here
-}
-</script>`
+
 const boxed = document.getElementById("boxed")
 boxed.innerHTML =
 ` <div id=headerContainer></div>
@@ -42,14 +36,13 @@ const userInput = document.getElementById("userInputContainer")
 
   botText.innerHTML = 
   `<div id="chatbox">
-    <p class="botText"><span>Hi! Im Ernest</span></p>
-    <p class="botText">
-      <span>How I can  help you </span> <br/><br/>
 
+    <p class="botText">
+      <span> Hi! Im Ernest ,How can I help you </span> <br/><br/>
     </p>
-    <p class="botText"><span>Type "quit" to close</span></p>
-    <div class= "action-list">
-      <div class = "action" onclick="handleClick()"> services </div>
+    <p class="botText"><span>Type "close" to close</span></p>
+    <div class= "action-list" id="action-list">
+      <div class = "action" onclick="reply('123')"> services </div>
       <div class = "action"> solutions </div>
       <div class = "action"> Book a call </div>
       <div class = "action"> Leave a message </div>
@@ -88,7 +81,7 @@ function closeForm(){
     var rawText = $("#textInput").val();
     var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
   
-    if (rawText == "quit"){
+    if (rawText == "close"){
       close()
     }
 
@@ -114,8 +107,8 @@ function closeForm(){
     }).then((resp) => resp.json())
       .then((data) => {
 
-            //console.log(Id)
-            var botHtml = '<p class="botText"><span>' + data.response + "</span></p>";
+          //console.log(Id)
+          var botHtml = '<p class="botText"><span>' + data.response + "</span></p>";
           $("#chatbox").append(botHtml);
 
           document
