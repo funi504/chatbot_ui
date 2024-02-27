@@ -43,24 +43,12 @@ const emailActionBtn = ()=>{
     document.getElementById("form-container").style.display = "block";
 }
 
-const whatsappActionBtn = ()=>{
-    
-}
 
 // reply dummy data 
-const replyDummyData = [
+const buttonData = [
    {
-        actionName:"services",
+        name:"services",
         Id: "123",
-        reply:" this is some made up response about our services",
-        nextActionChoices: [`<div class = "action" onclick="reply('1234')"> call </div>`, 
-                            `<div class = "action"> prices </div>`]
+        reply_id : "123replyid" 
     },
-    {
-        actionName:"Talk to a Human",
-        Id :"1234",
-        reply:" click below to chose between whatsapp or email",
-        nextActionChoices: [`<div class = "action" onclick ="window.open('https://wa.me/${cellphoneNumbers}')" > whatsapp </div>`, 
-                            `<div class = "action" onclick='emailActionBtn()'> send email </div>`]
-    }
 ]
