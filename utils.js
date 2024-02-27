@@ -42,11 +42,7 @@ const userInput = document.getElementById("userInputContainer")
     </p>
     <p class="botText"><span>Type "close" to close</span></p>
     <div class= "action-list" id="action-list">
-      <div class = "action" onclick="reply('123')"> services </div>
-      <div class = "action"> solutions </div>
-      <div class = "action"> Book a call </div>
-      <div class = "action"> Leave a message </div>
-      
+      <div class = "action" onClick = reply("123")>test</div>
     </div>
   </div>`
 
