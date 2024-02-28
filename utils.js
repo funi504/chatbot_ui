@@ -1,6 +1,7 @@
 function display() {
   document.getElementById("boxed").style.display = "block";
   document.getElementById("chatWithUsContainer").style.display = "none";
+  populateInitialNodes()
 
 }
 function closeChat(){

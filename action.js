@@ -18,7 +18,15 @@ const populateInitialNodes = ()=>{
           "projectId": Id
           })
 
-    }).then((resp) => resp.json())
+    }).then(response => {
+        // Check the HTTP status code
+        if (!response.ok) {
+            throw new Error( response.status + ' ' + response.statusText);
+        }
+    
+        // Process the successful response
+        return response.json();
+    })
     .then((data)=>{
 
         //console.log(data)
@@ -28,7 +36,10 @@ const populateInitialNodes = ()=>{
 
             
         })
-    })
+    }).catch((error) => {
+        console.error('Error:', error);
+        alert("Failed to load .");
+    });
 };   
    
 const reply = (replyId, name) => {
@@ -49,7 +60,15 @@ const reply = (replyId, name) => {
                 "projectId": Id,
                 "replyId": replyId
             })
-        }).then((resp) => resp.json())
+        }).then(response => {
+            // Check the HTTP status code
+            if (!response.ok) {
+                throw new Error( response.status + ' ' + response.statusText);
+            }
+        
+            // Process the successful response
+            return response.json();
+        })
         .then((data) => {
             // Process the response data
             data.data.map((data) => {
