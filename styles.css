@@ -55,6 +55,12 @@ h1 {
     height:510px;
     
 }
+.close-chat-button{
+
+    margin-left:50%;
+    cursor: pointer;
+
+}
 #userInput {
 
     
@@ -84,7 +90,7 @@ h1 {
 .userText {
     color: black;
     font-family: monospace;
-    background-color: #668fff;
+    background-color: #5a7ee0;
     margin-left: 35%;
     font-size: 13px;
     text-align: left;
@@ -182,7 +188,7 @@ h1 {
 #form-container{
     display:none;
 }
-#close-button{
+#close-form-button{
     background-color:white;
     margin-left: 85%;
     cursor: pointer;
@@ -262,6 +268,7 @@ textarea {
 .action{
     display: inline-block;
     border: 2px solid rgb(137, 139, 243);
+    color:rgb(137, 139, 243) ;
     border-radius: 10px;
     padding: 5px;
     cursor: pointer;
@@ -296,4 +303,29 @@ textarea {
     }
        
 }
+.botTyping {
+    text-align: left;
+    margin-left: 10px; /* Adjust as needed */
+}
 
+.botTyping span {
+    display: inline-block;
+    width: 0.5em;
+    height: 0.5em;
+    background-color: #333;
+    border-radius: 50%;
+    margin: 0 0.25em; /* Adjust as needed */
+    animation: typingAnimation 1.5s infinite;
+}
+
+@keyframes typingAnimation {
+    0%, 20%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-0.5em);
+    }
+    60% {
+        transform: translateY(-1em);
+    }
+}

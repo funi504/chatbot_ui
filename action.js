@@ -1,10 +1,8 @@
 
-const actionList = document.getElementById("action-list")
-
-const populate = ()=>{
-    
-    $("#action-list").append('<div class = "action">just got appended </div>')
-}
+function autoScroll() {
+    var chatbox = document.getElementById('chatbox');
+    chatbox.scrollTop = chatbox.scrollHeight;
+  }
 // reply button functions
 const populateInitialNodes = ()=>{
 
@@ -23,53 +21,62 @@ const populateInitialNodes = ()=>{
     }).then((resp) => resp.json())
     .then((data)=>{
 
-        console.log(data)
+        //console.log(data)
         data.data.map((data)=>{
             const reply_id = data.connected_reply_id[0]
-            $("#action-list").append(`<p class="action" onclick= reply("${reply_id}")><span>` + data.node.data.name + "</span></p>");
+            $("#action-list").append(`<p class="action" onclick='reply("${reply_id}", "${data.node.data.name}")'><span>` + data.node.data.name + "</span></p>");
+
             
         })
     })
 };   
    
-const reply = (replyId)=>{
+const reply = (replyId, name) => {
+    // Display loading dots animation
+    let botTypingIndicator = '<p class="botTyping"><span></span><span></span><span></span></p>';
+    $("#chatbox").append(botTypingIndicator);
 
-    fetch("http://localhost:8080/reply", { 
-        method: 'post', 
-        headers: new Headers({
-            //'Authorization': 'Basic '+btoa('username:password'), 
-            'Content-Type': 'application/json'
-        }), 
-        body:JSON.stringify(
-          {
-            "projectId": Id,
-            "replyId": replyId
+    setTimeout(() => {
+        // Remove typing indicator after delay
+        $(".botTyping").remove();
+
+        fetch("http://localhost:8080/reply", {
+            method: 'post',
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            }),
+            body: JSON.stringify({
+                "projectId": Id,
+                "replyId": replyId
             })
-  
-      }).then((resp) => resp.json())
-      .then((data)=>{
-  
-          console.log(data)
-          data.data.map((data)=>{
-              //const reply_id = data.connected_reply_id[0]
-              $("#chatbox").append('<p class="botText"><span>' + data.node.data.message + "</span></p>");
+        }).then((resp) => resp.json())
+        .then((data) => {
+            // Process the response data
+            data.data.map((data) => {
+                let userText = '<p class="userText"><span>' + name + "</span></p>";
+                $("#chatbox").append(userText);
+                $("#chatbox").append('<p class="botText"><span>' + data.node.data.message + "</span></p>");
 
-              data.connected_button.map((button)=>{
-                  const button_id = button.id
-                  const button_name = button.data.name
-                  data.button_edge_target.map((target)=>{
+                data.connected_button.map((button) => {
+                    const button_id = button.id
+                    const button_name = button.data.name
 
-                    if(button_id === target.button_id){
-                        $("#chatbox").append(`<p class="action" onclick= reply("${target.edge_target}")><span>` + button_name + "</span></p>");
-                    }
-                  })
-              
-
-
-              })
-          })
-      })
+                    data.button_edge_target.map((target) => {
+                        if (button_id === target.button_id) {
+                            $("#chatbox").append(`<p class="action" onclick='reply("${target.edge_target}","${button_name}")'><span>` + button_name + "</span></p>");
+                        }
+                    })
+                })
+            })
+            autoScroll()
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert("Failed to send reply.");
+        });
+    }, 1000); // Adjust the delay duration (in milliseconds) as needed
 }
+
 
 
     //do get data from database

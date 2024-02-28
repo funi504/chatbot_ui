@@ -1,9 +1,19 @@
+function display() {
+  document.getElementById("boxed").style.display = "block";
+  document.getElementById("chatWithUsContainer").style.display = "none";
+
+}
+function closeChat(){
+
+  document.getElementById("boxed").style.display = "none";
+  document.getElementById("chatWithUsContainer").style.display = "block";
+}
 
 const boxed = document.getElementById("boxed")
 boxed.innerHTML =
 ` <div id=headerContainer></div>
   <div id='form-container'>
-    <h4 onclick=closeForm() id='close-button'>close</h4>
+    <h4 onclick=closeForm() id='close-form-button'>close</h4>
     <form id='email-form' >
       <input type='text' placeholder='Enter your name' id='name-input' name='name'></input>
       <input type='text' placeholder='Enter your email' id='email-input' name='email'></input>
@@ -30,38 +40,26 @@ const userInput = document.getElementById("userInputContainer")
     <a id="sendWhatsapp" href="https://wa.me/${cellphoneNumbers}" >
       <img src="img.png" class="img"/>
     </a>
+    <div onClick=closeChat() class="close-chat-button">&#10006;</div>
   </div>`
 
-  header.append = '<div> close</div>'
 
   botText.innerHTML = 
   `<div id="chatbox">
-
     <p class="botText">
       <span> Hi! Im Ernest ,How can I help you </span> <br/><br/>
     </p>
-    <p class="botText"><span>Type "close" to close</span></p>
     <div class= "action-list" id="action-list">
-      <div class = "action" onClick = reply("123")>test</div>
     </div>
   </div>`
 
   userInput.innerHTML = 
   `<div id="userInput">
     <input id="textInput" type="text" name="msg" placeholder="Type here..." />
-    <div id="sendButton"> &#128077; </div>
+    <div id="sendButton"> &#x2192; </div>
   </div>`
 
-function display() {
-  document.getElementById("boxed").style.display = "block";
-  document.getElementById("chatWithUsContainer").style.display = "none";
 
-}
-function close(){
-
-  document.getElementById("boxed").style.display = "none";
-  document.getElementById("chatWithUsContainer").style.display = "block";
-}
 
 function displayForm() {
   document.getElementById("form-container").style.display = "block";
@@ -78,7 +76,7 @@ function closeForm(){
     var userHtml = '<p class="userText"><span>' + rawText + "</span></p>";
   
     if (rawText == "close"){
-      close()
+      closeChat()
     }
 
     $("#textInput").val("");
@@ -175,7 +173,15 @@ function closeForm(){
             "project_id": Id
             })
   
-      })
+      }).then(response => {
+        // Check the HTTP status code
+        if (!response.ok) {
+            throw new Error('Email not sent - ' + response.status + ' ' + response.statusText);
+        }
+    
+        // Process the successful response
+        return response.json();
+    })
       .then(data => {
         // Handle the response after posting data
         console.log(data);
